@@ -1,15 +1,16 @@
 import { createBrowserRouter } from "react-router";
-import Favorite from "../Favorite";
 import Home from "../pages/Home";
 import MainLayout from "../layouts/MainLayout";
+import Favorites from "../pages/Favorites";
+import About from "../pages/About";
+import ErrorPage from "../pages/ErrorPage";
+import PhoneDetails from "../pages/PhoneDetails";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
-    errorElement: (
-      <p className="text-center text-5xl text-red-500">Error Page</p>
-    ),
+    errorElement: <ErrorPage />,
     children: [
       {
         index: "/",
@@ -17,21 +18,15 @@ const router = createBrowserRouter([
       },
       {
         path: "/favorites",
-        element: <Favorite />,
-        children: [
-          {
-            path: "more-nested",
-            element: (
-              <p className="text-center text-3xl">
-                This is More nested favorite page
-              </p>
-            ),
-          },
-        ],
+        element: <Favorites />,
       },
       {
         path: "/about",
-        element: <div className="text-center text-4xl">This is About page</div>,
+        element: <About />,
+      },
+      {
+        path: "/phone-details",
+        element: <PhoneDetails />,
       },
     ],
   },

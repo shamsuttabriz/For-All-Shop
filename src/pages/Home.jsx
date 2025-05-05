@@ -1,10 +1,11 @@
 import React from "react";
+import Hero from "../components/Hero";
 
 function Home() {
   return (
     <div>
-      <h1 className="text-3xl text-center">Hero Section</h1>
-      <p className="text-3xl text-center">All Phone Showcase</p>
+      <Hero />
+      <p className="text-3xl">All Phone Showcase</p>
     </div>
   );
 }
