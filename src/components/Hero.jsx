@@ -11,7 +11,7 @@ function Hero() {
       />
       <div className="text-center">
         <h1 className="font-thin text-5xl md:text-7xl text-gray-900 mt-5">
-          Browse, SEarch, View, Buy
+          Browse, Search, View, Buy
         </h1>
         <p className="text-gray-500 mb-10 py-4 md:px-24">
           Best place to browse, search, view details and purchase of top
