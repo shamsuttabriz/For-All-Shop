@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { Suspense, useState } from "react";
 import Hero from "../components/Hero";
 import PhonesContainer from "../components/PhonesContainer";
 import { useLoaderData } from "react-router";
 
 function Home() {
   const data = useLoaderData();
-  const [phones, setPhones] = useState(data)
+  const [phones, setPhones] = useState(data);
+
   const handleSearch = (e, text) => {
     e.preventDefault();
     if (text === " ") return setPhones(data);
@@ -19,7 +20,9 @@ function Home() {
   return (
     <div>
       <Hero handleSearch={handleSearch} />
-      <PhonesContainer phones={phones} />
+      <Suspense fallback={"<p>Loading, Please wait..</p>"}>
+        <PhonesContainer phones={phones} />
+      </Suspense>
     </div>
   );
 }

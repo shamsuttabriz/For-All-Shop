@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router";
 
 export default function PhoneCard({ phone }) {
-  const { name, image, description } = phone || {};
+  const { id, name, image, description } = phone || {};
   return (
     <div className="card bg-base-100 shadow-md border border-slate-300">
       <figure>
@@ -13,7 +13,7 @@ export default function PhoneCard({ phone }) {
         <p className="mb-4">{description}</p>
         <div className="card-actions justify-end">
           <Link
-            to="/phone-details"
+            to={`/phone-details/${id}`}
             className="relative inline-block px-4 py-2 font-medium group"
           >
             <span className="absolute inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-black group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
