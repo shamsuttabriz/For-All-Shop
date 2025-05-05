@@ -1,6 +1,6 @@
 import React from "react";
 import { MdBookmarkAdd, MdShoppingCart } from "react-icons/md";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 
 function Navbar() {
   return (
@@ -47,7 +47,9 @@ function Navbar() {
             </li>
           </ul>
         </div>
-        <a className="text-xl font-semibold">ForAllShop</a>
+        <Link to="/" className="text-xl font-semibold">
+          ForAllShop
+        </Link>
       </div>
       <div className="navbar-end">
         <ul className="menu menu-horizontal px-1 hidden md:flex gap-4">
