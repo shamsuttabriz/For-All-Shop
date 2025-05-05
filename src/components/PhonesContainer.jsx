@@ -23,7 +23,7 @@ function PhonesContainer({ phones }) {
       <button
         onClick={() => {
           setShowAll((prev) => !prev);
-          if (showAll) window.scroll(0, 0);
+          if (showAll) window.scroll(0, 500);
         }}
         class="relative inline-block text-lg group mb-6 cursor-pointer"
       >
