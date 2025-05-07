@@ -1,8 +1,56 @@
-import React from "react";
+import React, { useContext } from "react";
 import { MdBookmarkAdd, MdShoppingCart } from "react-icons/md";
 import { Link, NavLink } from "react-router";
+import { CartContext } from "../providers/Contexts";
 
 function Navbar() {
+  const { carts } = useContext(CartContext);
+  console.log(carts);
+  const list = (
+    <>
+      <li>
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            isActive ? "text-indigo-500 font-bold text-lg" : "font-bold text-lg"
+          }
+        >
+          Home
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/about"
+          className={({ isActive }) =>
+            isActive ? "text-indigo-500 font-bold text-lg" : "font-bold text-lg"
+          }
+        >
+          About
+        </NavLink>
+      </li>
+      <li className="relative ">
+        <NavLink
+          to="/cart"
+          className={({ isActive }) =>
+            isActive ? "text-indigo-500 font-bold text-lg" : "font-bold text-lg"
+          }
+        >
+          <MdShoppingCart className="text-xl" />
+        </NavLink>
+        <p className="absolute -top-1.5 left-5.5 md:-top-3 md:-right-3 font-bold">{carts.length}</p>
+      </li>
+      <li>
+        <NavLink
+          to="/favorites"
+          className={({ isActive }) =>
+            isActive ? "text-indigo-500 font-bold text-lg" : "font-bold text-lg"
+          }
+        >
+          <MdBookmarkAdd className="text-xl" />
+        </NavLink>
+      </li>
+    </>
+  );
   return (
     <div className="navbar p-0 bg-base-100 shadow-sm mx-auto px-8 md:px-112 lg:px-16 xl:px-24">
       <div className="navbar-start">
@@ -28,23 +76,7 @@ function Navbar() {
             tabIndex={0}
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
-            <li>
-              <a>Item 1</a>
-            </li>
-            <li>
-              <a>Parent</a>
-              <ul className="p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a>Item 3</a>
-            </li>
+            {list}
           </ul>
         </div>
         <Link to="/" className="text-xl font-semibold">
@@ -52,47 +84,8 @@ function Navbar() {
         </Link>
       </div>
       <div className="navbar-end">
-        <ul className="menu menu-horizontal px-1 hidden md:flex gap-4">
-          <li>
-            <NavLink
-              to="/"
-              className={({ isActive }) =>
-                isActive ? "text-indigo-500 font-bold" : "font-bold"
-              }
-            >
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/about"
-              className={({ isActive }) =>
-                isActive ? "text-indigo-500 font-bold" : "font-bold"
-              }
-            >
-              About
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/cart"
-              className={({ isActive }) =>
-                isActive ? "text-indigo-500 font-bold" : "font-bold"
-              }
-            >
-              <MdShoppingCart className="text-xl" />
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/favorites"
-              className={({ isActive }) =>
-                isActive ? "text-indigo-500 font-bold" : "font-bold"
-              }
-            >
-              <MdBookmarkAdd className="text-xl" />
-            </NavLink>
-          </li>
+        <ul className="menu menu-horizontal px-1 hidden md:flex gap-4 md:items-center">
+          {list}
         </ul>
       </div>
     </div>
